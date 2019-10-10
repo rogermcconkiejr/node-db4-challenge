@@ -31,14 +31,10 @@ router.get('/', (req, res) => {
   
     RecipeModel.getInstructions(id)
     .then(instructions => {
-      if (instructions) {
-        res.json(instructions);
-      } else {
-        res.status(404).json({ message: 'Could not find scheme with given id.' })
-      }
+        res.json(instructions)
     })
     .catch(err => {
-      res.status(500).json({ message: 'Failed to get schemes' });
+      res.status(500).json({ message: 'Failed to get instructions' });
     });
   });
 
