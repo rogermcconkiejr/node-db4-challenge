@@ -5,11 +5,13 @@ exports.up = function(knex) {
         tbl.increments();
   
         tbl.string('name', 255).notNullable();
+        tbl.text('instructions');
     })
     .createTable('ingredientsgood', tbl=>{
       tbl.increments();
   
       tbl.string('name', 255).notNullable();
+      tbl.string('quantity', 255).notNullable();
     })
     .createTable('recipe_ingredients', tbl=>{
         tbl.increments();
@@ -35,7 +37,7 @@ exports.up = function(knex) {
         .onUpdate('CASCADE')
         .onDelete('RESTRICT')
     
-        tbl.unique(['recipesgood_id', 'ingredientsgood_id'])
+        // tbl.unique(['recipesgood_id', 'ingredientsgood_id'])
       })
   };
 
